@@ -1,0 +1,178 @@
+import * as React from 'react';
+import PropTypes from 'prop-types';
+
+import Box from '@mui/material/Box';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import MenuItem from '@mui/material/MenuItem';
+import Drawer from '@mui/material/Drawer';
+import MenuIcon from '@mui/icons-material/Menu';
+import ToggleColorMode from './ToggleColorMode';
+import { Link } from '@mui/material';
+
+function NavigationBar({ mode, toggleColorMode }) {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const sectionElement = document.getElementById(sectionId);
+    const offset = 128;
+    if (sectionElement) {
+      const targetScroll = sectionElement.offsetTop - offset;
+      sectionElement.scrollIntoView({ behavior: 'smooth' });
+      window.scrollTo({
+        top: targetScroll,
+        behavior: 'smooth',
+      });
+      setOpen(false);
+    }
+  };
+
+  return (
+    <div>
+      <AppBar
+        position="absolute"
+        sx={{
+          boxShadow: 0,
+          bgcolor: 'transparent',
+          backgroundImage: 'none',
+          mt: 2,
+          color: 'white',  // Set text color to white
+        }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar
+            variant="regular"
+            sx={(theme) => ({
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              flexShrink: 0,
+              maxHeight: 40,
+              color: 'white', 
+            })}
+          >
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: 'flex',
+                alignItems: 'center',
+                ml: '-18px',
+                px: 0,
+                color: 'white',
+              }}
+            >
+              <Link href="/" underline='none' sx={{ color: 'white' }}>
+              </Link>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, color: 'white' }}>
+                <MenuItem
+                  onClick={() => scrollToSection('hero')}
+                  sx={{ py: '6px', px: '6px', color: 'white' }}
+                >
+                  <Button variant='outlined' sx={{ color: 'white', borderColor: 'white' }}>Ru</Button>
+                  <Button sx={{ color: 'white' }}>Uzb</Button>
+                </MenuItem>
+                <MenuItem
+                  onClick={() => scrollToSection('about')}
+                  sx={{ py: '6px', px: '12px'}}
+                >
+                  <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+                </MenuItem>
+              </Box>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'flex' },
+                gap: 0.5,
+                alignItems: 'center',
+                color: 'white',
+              }}
+            >
+              <Button
+                color="primary"
+                variant="outlined"
+                // size="small"
+                component="a"
+                href="/"
+                sx={{ color: 'white', borderColor: 'white' }} 
+              >
+                Главная
+              </Button>
+              <Button
+                color="primary"
+                variant="text"
+                // size="small"
+                component="a"
+                href="/signup"
+                sx={{ color: 'white' }}  // Set text color to white
+              >
+                Войти
+              </Button>
+            </Box>
+            <Box sx={{ display: { sm: '', md: 'none' } }}>
+              <Button
+                variant="text"
+                color="primary"
+                aria-label="menu"
+                onClick={toggleDrawer(true)}
+                sx={{ minWidth: '30px', p: '4px', color: 'white' }}  // Set text color to white
+              >
+                <MenuIcon />
+              </Button>
+              <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+                <Box
+                  sx={{
+                    minWidth: '60dvw',
+                    p: 2,
+                    backgroundColor: 'background.paper',
+                    flexGrow: 1,
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'end',
+                      flexGrow: 1,
+                    }}
+                  >
+                    <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
+                  </Box>
+                  <MenuItem onClick={() => scrollToSection('hero')}>
+                    Главная
+                  </MenuItem>
+                  <Divider />
+                  <MenuItem>
+                    <Button
+                      color="primary"
+                      variant="outlined"
+                      component="a"
+                      href="/signin/"
+                      sx={{ width: '100%'}}  // Set text color and border to white
+                    >
+                      Войти
+                    </Button>
+                  </MenuItem>
+                </Box>
+              </Drawer>
+            </Box>
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </div>
+  );
+}
+
+NavigationBar.propTypes = {
+  mode: PropTypes.oneOf(['dark', 'light']).isRequired,
+  toggleColorMode: PropTypes.func.isRequired,
+};
+
+export default NavigationBar;

@@ -14,7 +14,7 @@ const Main = () => {
             <Container>
                 <Box textAlign={'center'} mb={4}>
                     <Typography
-                        variant={isMobile ? "h4" : "h3"}
+                        variant={isMobile ? "h5" : "h3"}
                         sx={{ mb: 2 }}
                     >
                         Основные функционалы
@@ -26,7 +26,7 @@ const Main = () => {
                     </Typography>
                 </Box>
 
-                <Grid container alignItems="center" px={9} >
+                <Grid container alignItems="center" px={isMobile?2:9} >
                     {/* item 1 */}
                     <Grid item xs={12} md={6} display="flex" mb={{
                         xs: 3,
@@ -121,7 +121,7 @@ const Main = () => {
                         </Box>
                     </Grid>
                 </Grid>
-                <Grid container alignItems="center" px={9}>
+                <Grid container alignItems="center" px={isMobile?2:9}>
                     
                     {/* item 3 */}
                     <Grid item xs={12} md={6} display="flex" mb={{

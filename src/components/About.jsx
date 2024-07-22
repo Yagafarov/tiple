@@ -11,15 +11,15 @@ const About = () => {
   return (
     <Container>
       <Box py={4}>
-        <Box textAlign={'center'} px={12}>
+        <Box textAlign={'center'} px={isMobile?2:12}>
           <Typography
-            variant={isMobile ? "h4" : "h3"}
-            sx={{ mb: 2, color: theme.palette.primary.main }}
+            variant={isMobile ? "h5" : "h3"}
+            sx={{  color: theme.palette.primary.main }}
           >
             Основная информация
           </Typography>
           <Typography
-            variant={isMobile ? "h6" : "h5"}
+            variant={isMobile ? "body1" : "h5"}
             sx={{ textAlign: 'center', py: 2 }}
           >
             Теплица — ваш маленький жаркий уголок на участке, вмещающий буйные зеленые заросли теплолюбивых цветов или богатый урожай овощей.

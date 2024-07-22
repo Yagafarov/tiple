@@ -16,7 +16,7 @@ const Contact = () => {
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
-        <Container>
+        <Container >
             <Box textAlign={'center'}>
                 <Typography
                     variant={isMobile ? 'h4' : 'h3'}
@@ -75,11 +75,11 @@ const Contact = () => {
                                 teplica@gmail.com
                             </a>
                         </Typography>
-                        <Typography variant="body1" sx={{ color: 'text.primary' }}>
+                        {/* <Typography variant="body1" sx={{ color: 'text.primary' }}>
                         Наш умный система для управления теплицами обеспечивает надежный контроль и оптимизацию всех аспектов 
                             работы теплицы. Если у вас возникли вопросы или вам нужна поддержка, пожалуйста, свяжитесь с нами по указанным 
                             контактам. Мы всегда готовы помочь вам улучшить ваши тепличные условия!
-                        </Typography>
+                        </Typography> */}
                     </Box>
                 </Grid>
             </Grid>

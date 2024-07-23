@@ -35,7 +35,11 @@ const FooterApp = () => {
             <Container>
                 <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                        <FooterSection>
+                        <FooterSection
+                        sx={{
+                            justifyContent:{ xs: 'center', sm: 'flex-start' }
+                        }}
+                        >
                             <Logo src={logo} alt="Logo" />
                             <Typography variant="h5">
                                 <a href="mailto:teplica@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
@@ -48,9 +52,9 @@ const FooterApp = () => {
                     <Grid item xs={12} sm={6}>
                         <FooterSection
                             sx={{ 
-                                display: 'flex', 
+                                display: 'flex',
                                 flexDirection: 'column', 
-                                alignItems: 'flex-end', 
+                                alignItems: { xs: 'center', sm: 'flex-end' } , 
                                 justifyContent: { xs: 'center', sm: 'flex-end' } 
                             }}
                         >

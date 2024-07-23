@@ -12,10 +12,11 @@ import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import { Link } from '@mui/material';
+import { useLanguage } from './LanguageContext';
 
 function NavigationBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
-  const [language, setLanguage] = React.useState('uzb');
+  const { language, setLanguage } = useLanguage();
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -48,7 +49,7 @@ function NavigationBar({ mode, toggleColorMode }) {
           bgcolor: 'transparent',
           backgroundImage: 'none',
           mt: 2,
-          color: 'white',  // Set text color to white
+          color: 'white',
         }}
       >
         <Container maxWidth="lg">
@@ -116,7 +117,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                 href="/"
                 sx={{ color: 'white', borderColor: 'white' }} 
               >
-                Главная
+                {language === 'ru' ? 'Главная' : 'Bosh sahifa'}
               </Button>
               <Button
                 color="primary"
@@ -126,7 +127,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                 href="/signup"
                 sx={{ color: 'white' }}  // Set text color to white
               >
-                Войти
+                {language === 'ru' ? 'Войти' : 'Kirish'}
               </Button>
             </Box>
             <Box sx={{ display: { sm: '', md: 'none' } }}>
@@ -159,7 +160,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                     <ToggleColorMode mode={mode} toggleColorMode={toggleColorMode} />
                   </Box>
                   <MenuItem onClick={() => scrollToSection('hero')}>
-                    Главная
+                    {language === 'ru' ? 'Главная' : 'Bosh sahifa'}
                   </MenuItem>
                   <Divider />
                   <MenuItem>
@@ -170,7 +171,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                       href="/signin/"
                       sx={{ width: '100%'}}  // Set text color and border to white
                     >
-                      Войти
+                      {language === 'ru' ? 'Войти' : 'Kirish'}
                     </Button>
                   </MenuItem>
                 </Box>

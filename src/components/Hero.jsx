@@ -3,12 +3,16 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import bgImage from '../assets/mainbg.jpg';
+import { useLanguage } from './LanguageContext'; 
+
 
 export default function Hero() {
+    const { language } = useLanguage(); // Use the language context
+
     return (
         <Box
             id="hero"
-            sx={(theme) => ({
+            sx={{
                 width: '100%',
                 height: '100vh',
                 backgroundImage: `url(${bgImage})`,
@@ -18,7 +22,7 @@ export default function Hero() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 color: '#fff',
-            })}
+            }}
         >
             <Container
                 sx={{
@@ -38,7 +42,7 @@ export default function Hero() {
                         mb: 2,
                     }}
                 >
-                    Чистое выращивание
+                    {language === 'ru' ? 'Чистое выращивание' : 'Sof yetishtirish'}
                 </Typography>
                 <Typography
                     variant="h6"
@@ -46,7 +50,15 @@ export default function Hero() {
                         fontSize: { xs: '1.2rem', md: '1.5rem' }
                     }}
                 >
-                    Мы расскажем, как участники<br/>нашего портала делают<br/>умные теплицы.
+                    {language === 'ru' ? (
+                        <>
+                            Мы расскажем, как участники нашего<br/>портала делают умные теплицы.
+                        </>
+                    ) : (
+                        <>
+                            Portalimiz ishtirokchilari aqlli issiqxonalarni<br/>qanday qilayotganini aytib beramiz.
+                        </>
+                    )}
                 </Typography>
             </Container>
         </Box>

@@ -15,12 +15,12 @@ const LoginModal = ({ open, onClose }) => {
         console.log('Parol:', password);
         onClose();
     };
-
+   
     return (
         <Dialog open={open} onClose={onClose}>
             <DialogTitle>{language === 'ru' ? 'Авторизоваться' : 'Kirish'}</DialogTitle>
             <DialogContent>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="body1" gutterBottom>
                 {language === 'ru' ? 'Пожалуйста, введите логин и пароль' : 'Iltimos, login va parolingizni kiriting'}
                 </Typography>
                 <TextField

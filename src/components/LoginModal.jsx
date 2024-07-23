@@ -11,10 +11,9 @@ const LoginModal = ({ open, onClose }) => {
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
-        // Handle login logic here
         console.log('Login:', login);
         console.log('Parol:', password);
-        onClose(); // Close the modal after login
+        onClose();
     };
 
     return (

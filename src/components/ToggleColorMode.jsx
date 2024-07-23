@@ -23,7 +23,7 @@ function ToggleColorMode({ mode, toggleColorMode }) {
             backgroundColor: mode === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
           },
           '&:hover .MuiSvgIcon-root': {
-            color: mode === 'dark' ? 'yellow' : 'white', // Example color change on hover
+            color: mode === 'dark' ? 'yellow' : 'white', 
           },
         }}
       >

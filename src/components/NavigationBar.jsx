@@ -133,8 +133,8 @@ function NavigationBar({ mode, toggleColorMode }) {
                 color="primary"
                 variant="text"
                 // size="small"
-                onClick={handleOpenModal} // Open the modal on click
-                sx={{ color: 'white' }}  // Set text color to white
+                onClick={handleOpenModal} 
+                sx={{ color: 'white' }}  
               >
                 {language === 'ru' ? 'Войти' : 'Kirish'}
               </Button>
@@ -145,7 +145,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                 color="primary"
                 aria-label="menu"
                 onClick={toggleDrawer(true)}
-                sx={{ minWidth: '30px', p: '4px', color: 'white' }}  // Set text color to white
+                sx={{ minWidth: '30px', p: '4px', color: 'white' }} 
               >
                 <MenuIcon />
               </Button>
@@ -188,7 +188,7 @@ function NavigationBar({ mode, toggleColorMode }) {
           </Toolbar>
         </Container>
       </AppBar>
-      <LoginModal open={modalOpen} onClose={handleCloseModal} /> {/* Render the modal */}
+      <LoginModal open={modalOpen} onClose={handleCloseModal} />
     </div>
   );
 }

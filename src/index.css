@@ -4,3 +4,33 @@
   box-sizing: border-box;
 }
 
+/* WebKit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+/* Scrollbar track (part you scroll through) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track color */
+  border-radius: 10px;
+}
+
+/* Scrollbar thumb (part you drag) */
+::-webkit-scrollbar-thumb {
+  background: #007bff; /* Thumb color (primary color) */
+  border-radius: 10px;
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0056b3; /* Darker shade for hover effect */
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin; /* Options: auto, thin, none */
+  scrollbar-color: #007bff #f1f1f1; /* Thumb color and Track color */
+}
+
+

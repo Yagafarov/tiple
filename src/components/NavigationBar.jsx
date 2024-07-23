@@ -76,7 +76,7 @@ function NavigationBar({ mode, toggleColorMode }) {
             >
               <Link href="/" underline='none' sx={{ color: 'white' }}>
               </Link>
-              <Box sx={{ display: { xs: 'none', md: 'flex' }, color: 'white' }}>
+              <Box sx={{ display: 'flex', color: 'white' }}>
                 <MenuItem sx={{ py: '6px', px: '6px', color: 'white' }}>
                   <Button 
                     variant={language === 'ru' ? 'outlined' : 'text'} 

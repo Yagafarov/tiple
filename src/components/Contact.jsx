@@ -21,7 +21,7 @@ const Contact = () => {
         <Container >
             <Box textAlign={'center'}>
                 <Typography
-                    variant={isMobile ? 'h4' : 'h3'}
+                    variant={isMobile ? 'h5' : 'h3'}
                     sx={{ mb: 4, color: theme.palette.primary.main }}
                 >
                 {language === 'ru' ? 'Контакты и адреса' : 'Kontaktlar va manzillar'}

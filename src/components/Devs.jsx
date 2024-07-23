@@ -36,7 +36,7 @@ const Devs = () => {
         <Container>
             <Box textAlign="center" py={10}>
                 <Typography
-                    variant={isMobile ? 'h4' : 'h3'}
+                    variant={isMobile ? "h5" : "h3"}
                     sx={{ mb: 4, color: theme.palette.primary.main }}
                 >
                     {language === 'ru' ? 'О разработчиках' : 'Dasturchilar haqida'}

@@ -7,7 +7,7 @@ import { useLanguage } from './LanguageContext';
 
 
 export default function Hero() {
-    const { language } = useLanguage(); // Use the language context
+    const { language } = useLanguage();
 
     return (
         <Box

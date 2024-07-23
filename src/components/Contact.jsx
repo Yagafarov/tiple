@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Typography, Card, CardContent, Grid, styled, useMediaQuery } from '@mui/material';
 import { useTheme } from '@emotion/react';
+import { useLanguage } from './LanguageContext'; 
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -14,6 +15,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 const Contact = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const { language } = useLanguage();
 
     return (
         <Container >
@@ -22,11 +24,11 @@ const Contact = () => {
                     variant={isMobile ? 'h4' : 'h3'}
                     sx={{ mb: 4, color: theme.palette.primary.main }}
                 >
-                   Контакты и адреса
+                {language === 'ru' ? 'Контакты и адреса' : 'Kontaktlar va manzillar'}
+                  
                 </Typography>
             </Box>
             <Grid container spacing={3} alignItems="center" mb={5}>
-                {/* Map Section */}
                 <Grid item xs={12} sm={6}>
                     <StyledCard>
                         <CardContent>
@@ -34,18 +36,16 @@ const Contact = () => {
                         </CardContent>
                     </StyledCard>
                 </Grid>
-                
-                {/* Information Section */}
                 <Grid item xs={12} sm={6}>
                     <Box sx={{ px: 5, height: '350px' }}>
                         <Typography variant='h5' sx={{ color: theme.palette.primary.main }}>
-                            Адрес:
+                        {language === 'ru' ?'Адрес:':'Manzil:'}
                         </Typography>
                         <Typography variant="body1" paragraph>
-                            г.Самарканд, ул. Кобил Ашурова 21, дом 6
+                        {language === 'ru' ?'г.Самарканд, ул. Садриддин Айний 21, дом 6':`Samarqand, Sadriddin Ayniy ko'chasi 21, 6-bino`}
                         </Typography>
                         <Typography variant='h5' sx={{ color: theme.palette.primary.main }}>
-                            Телефон:
+                            {language === 'ru' ?'Телефон:':'Telefon:'}
                         </Typography>
                         <Box sx={{ display: 'flex', gap: 2 }}>
                             <Typography variant="body1" paragraph sx={{ color: 'text.primary' }}>
@@ -60,7 +60,7 @@ const Contact = () => {
                             </Typography>
                         </Box>
                         <Typography variant='h5' sx={{ color: theme.palette.primary.main }}>
-                            Электронная почта:
+                            {language === 'ru' ?' Электронная почта:':'Elektron pochta:'}
                         </Typography>
                         <Typography variant="body1" paragraph sx={{ color: 'text.primary' }}>
                             <a href="mailto:teplica@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>

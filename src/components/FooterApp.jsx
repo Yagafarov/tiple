@@ -3,6 +3,7 @@ import { Box, Container, Typography, Button, Grid, styled } from '@mui/material'
 import { useTheme } from '@emotion/react';
 import logo from '../assets/logo.svg';
 import { LocationOn } from '@mui/icons-material';
+import { useLanguage } from './LanguageContext'; 
 
 const FooterContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -27,6 +28,7 @@ const ButtonGroup = styled(Box)({
 
 const FooterApp = () => {
     const theme = useTheme();
+    const { language } = useLanguage();
 
     return (
         <FooterContainer>
@@ -60,7 +62,7 @@ const FooterApp = () => {
                                     href="/"
                                     sx={{ color: 'white', borderColor: 'white' }}
                                 >
-                                    Главная
+                                    {language === 'ru' ? 'Главная' : 'Bosh sahifa'}
                                 </Button>
                                 <Button
                                     color="primary"
@@ -69,7 +71,7 @@ const FooterApp = () => {
                                     href="/signup"
                                     sx={{ color: 'white' }}
                                 >
-                                    Войти
+                                    {language === 'ru' ? 'Войти' : 'Kirish'}
                                 </Button>
                             </ButtonGroup>
                             <Typography variant="h6" mt={2}>
@@ -84,7 +86,7 @@ const FooterApp = () => {
                             </Typography>
                             <Typography variant="h6" sx={{ display: 'flex', alignItems: 'center' }}>
                                 <LocationOn sx={{ mr: 1 }} />
-                                г.Самарканд, ул. Кобил Ашурова 21, дом 6
+                                {language === 'ru' ?'г.Самарканд, ул. Садриддин Айний 21, дом 6':`Samarqand, Sadriddin Ayniy ko'chasi 21, 6-bino`}
                             </Typography>
                         </FooterSection>
                     </Grid>

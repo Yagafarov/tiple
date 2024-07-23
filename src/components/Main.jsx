@@ -1,14 +1,15 @@
 import React from 'react';
 import { Box, Container, Grid, Typography, useTheme, useMediaQuery } from '@mui/material';
 import main1 from '../assets/main1.png';
-import main2 from '../assets/main2.png'
-import main3 from '../assets/main3.png'
-import main4 from '../assets/main4.png'
+import main2 from '../assets/main2.png';
+import main3 from '../assets/main3.png';
+import main4 from '../assets/main4.png';
+import { useLanguage } from './LanguageContext'; 
 
 const Main = () => {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
-
+    const { language } = useLanguage();
     return (
         <Box py={4} sx={{ backgroundColor: theme.palette.primary.main, color: theme.palette.primary.contrastText }}>
             <Container>
@@ -17,16 +18,16 @@ const Main = () => {
                         variant={isMobile ? "h5" : "h3"}
                         sx={{ mb: 2 }}
                     >
-                        Основные функционалы
+                        {language === 'ru' ? 'Основные функционалы' : `Asosiy funksiyalar`}
                     </Typography>
                     <Typography
                         variant={isMobile ? "h6" : "h5"}
                     >
-                        теплицы
+                        {language === 'ru' ? 'теплицы' : `issiqxonaning`}
                     </Typography>
                 </Box>
 
-                <Grid container alignItems="center" px={isMobile?2:9} >
+                <Grid container alignItems="center" px={isMobile ? 2 : 9}>
                     {/* item 1 */}
                     <Grid item xs={12} md={6} display="flex" mb={{
                         xs: 3,
@@ -67,10 +68,10 @@ const Main = () => {
                             }
                         }} >
                             <Typography variant={isMobile ? "h5" : "h4"} sx={{ mb: 2 }}>
-                                Температура
+                                {language === 'ru' ? 'Температура' : `Harorat`}
                             </Typography>
                             <Typography variant={isMobile ? "body1" : "h6"}>
-                                Температура для хорошего роста и развития должна быть оптимальной. Т.е. для растений, нуждающихся в умеренной температуре - 15-18°С, теплолюбивым - 18-24°С. Следует особо сказать о пагубном действии слишком высоких температур в сочетании с сухим воздухом и недостатком света.
+                                {language === 'ru' ? 'Температура для хорошего роста и развития должна быть оптимальной. Т.е. для растений, нуждающихся в умеренной температуре - 15-18°С, теплолюбивым - 18-24°С. Следует особо сказать о пагубном действии слишком высоких температур в сочетании с сухим воздухом и недостатком света.' : `Yaxshi o'sish va rivojlanish uchun harorat optimal bo'lishi kerak. O'rtacha haroratga muhtoj o'simliklar uchun - 15-18°S, issiqsevarlar uchun - 18-24°S. Juda yuqori haroratning quruq havo va yorug'lik yetishmasligi bilan birgalikda zararli ta'siri haqida alohida aytish kerak.`}
                             </Typography>
                         </Box>
                     </Grid>
@@ -83,10 +84,10 @@ const Main = () => {
                             }
                         }}>
                             <Typography variant={isMobile ? "h5" : "h4"} sx={{ mb: 2 }}>
-                                Влажность
+                                {language === 'ru' ? 'Влажность' : `Namlik`}
                             </Typography>
                             <Typography variant={isMobile ? "body1" : "h6"}>
-                                Относительная влажность воздуха – это соотношение массовой доли водяного пара в воздухе к максимально возможной, измеряется в %. Оптимальная влажность для большинства растений 50-70%, для тропических и субтропических 70-100%.
+                                {language === 'ru' ? 'Относительная влажность воздуха – это соотношение массовой доли водяного пара в воздухе к максимально возможной, измеряется в %. Оптимальная влажность для большинства растений 50-70%, для тропических и субтропических 70-100%.' : `Havoning nisbiy namligi - bu havoda suv bug'ining massa ulushi maksimal mumkin bo'lgan nisbati, foizda o'lchanadi. Ko'pgina o'simliklar uchun optimal namlik 50-70%, tropik va subtropiklar uchun 70-100%.`}
                             </Typography>
                         </Box>
                     </Grid>
@@ -121,7 +122,7 @@ const Main = () => {
                         </Box>
                     </Grid>
                 </Grid>
-                <Grid container alignItems="center" px={isMobile?2:9}>
+                <Grid container alignItems="center" px={isMobile ? 2 : 9}>
                     
                     {/* item 3 */}
                     <Grid item xs={12} md={6} display="flex" mb={{
@@ -163,10 +164,10 @@ const Main = () => {
                             }
                         }} >
                             <Typography variant={isMobile ? "h5" : "h4"} sx={{ mb: 2 }}>
-                                Камера
+                                {language === 'ru' ? 'Камера' : `Kamera`}
                             </Typography>
                             <Typography variant={isMobile ? "body1" : "h6"}>
-                                Климатическая камера — камера, позволяющая точно воспроизводить агрессивное воздействие внешней среды и применяемая в научно-исследовательских учреждениях, позволяет с высокой точностью контролировать влажность и температуру воздуха.
+                                {language === 'ru' ? 'Климатическая камера — камера, позволяющая точно воспроизводить агрессивное воздействие внешней среды и применяемая в научно-исследовательских учреждениях, позволяет с высокой точностью контролировать влажность и температуру воздуха.' : `Iqlim kamerasi - tashqi muhitning tajovuzkor ta'sirini aniq takrorlash imkonini beruvchi va ilmiy-tadqiqot muassasalarida qo'llaniladigan kamera, havo namligi va haroratini yuqori aniqlikda nazorat qilish imkonini beradi.`}
                             </Typography>
                         </Box>
                     </Grid>
@@ -179,10 +180,10 @@ const Main = () => {
                             }
                         }}>
                             <Typography variant={isMobile ? "h5" : "h4"} sx={{ mb: 2 }}>
-                                Управление
+                                {language === 'ru' ? 'Управление' : `Boshqarish`}
                             </Typography>
                             <Typography variant={isMobile ? "body1" : "h6"}>
-                                Если гроубокс находится в помещении с отоплением, в квартире или доме, не имеет особого значения в какой именно период года вы занимаетесь выращиванием. Важно будет делать небольшие поправки в температурном режиме и влажности воздуха в период отопительного сезона.
+                                {language === 'ru' ? 'Если гроубокс находится в помещении с отоплением, в квартире или доме, не имеет особого значения в какой именно период года вы занимаетесь выращиванием. Важно будет делать небольшие поправки в температурном режиме и влажности воздуха в период отопительного сезона.' : `Agar growbox isitish tizimiga ega xonada, kvartirada yoki uyda joylashgan bo'lsa, yilning qaysi faslida ekish bilan shug'ullanishingiz muhim emas. Isitish mavsumida harorat rejimi va havo namligiga kichik tuzatishlar kiritish muhim bo'ladi.`}
                             </Typography>
                         </Box>
                     </Grid>

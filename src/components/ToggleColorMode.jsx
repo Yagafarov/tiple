@@ -22,9 +22,9 @@ function ToggleColorMode({ mode, toggleColorMode }) {
         }}
       >
         {mode === 'dark' ? (
-          <WbSunnyRoundedIcon fontSize="small" sx={{ color: 'white' }} /> // Set icon color to white
+          <WbSunnyRoundedIcon fontSize="small" sx={{ color: 'white' }} /> 
         ) : (
-          <ModeNightRoundedIcon fontSize="small" /> // Set icon color to white
+          <ModeNightRoundedIcon fontSize="small" sx={{ color: 'white' }} />
         )}
       </Button>
     </Box>

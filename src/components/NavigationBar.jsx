@@ -7,7 +7,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Divider from '@mui/material/Divider';
-import Typography from '@mui/material/Typography';
 import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,6 +15,7 @@ import { Link } from '@mui/material';
 
 function NavigationBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
+  const [language, setLanguage] = React.useState('uzb');
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -33,6 +33,10 @@ function NavigationBar({ mode, toggleColorMode }) {
       });
       setOpen(false);
     }
+  };
+
+  const handleLanguageChange = (selectedLanguage) => {
+    setLanguage(selectedLanguage);
   };
 
   return (
@@ -72,12 +76,21 @@ function NavigationBar({ mode, toggleColorMode }) {
               <Link href="/" underline='none' sx={{ color: 'white' }}>
               </Link>
               <Box sx={{ display: { xs: 'none', md: 'flex' }, color: 'white' }}>
-                <MenuItem
-                  onClick={() => scrollToSection('hero')}
-                  sx={{ py: '6px', px: '6px', color: 'white' }}
-                >
-                  <Button variant='outlined' sx={{ color: 'white', borderColor: 'white' }}>Ru</Button>
-                  <Button sx={{ color: 'white' }}>Uzb</Button>
+                <MenuItem sx={{ py: '6px', px: '6px', color: 'white' }}>
+                  <Button 
+                    variant={language === 'ru' ? 'outlined' : 'text'} 
+                    onClick={() => handleLanguageChange('ru')} 
+                    sx={{ color: 'white', borderColor: 'white', mx: 1 }}
+                  >
+                    Ru
+                  </Button>
+                  <Button 
+                    variant={language === 'uzb' ? 'outlined' : 'text'} 
+                    onClick={() => handleLanguageChange('uzb')} 
+                    sx={{ color: 'white', borderColor: 'white', mx: 1 }}
+                  >
+                    Uzb
+                  </Button>
                 </MenuItem>
                 <MenuItem
                   onClick={() => scrollToSection('about')}

@@ -45,7 +45,7 @@ const LoginModal = ({ open, onClose }) => {
                 />
             </DialogContent>
             <DialogActions>
-                <Button onClick={onClose}>{language === 'ru' ? 'Отмена' : 'Bemor qilish'}</Button>
+                <Button onClick={onClose}>{language === 'ru' ? 'Отмена' : 'Bekor qilish'}</Button>
                 <Button onClick={handleLogin} variant='contained' color="primary">{language === 'ru' ? 'Войти' : 'Kirish'}</Button>
             </DialogActions>
         </Dialog>

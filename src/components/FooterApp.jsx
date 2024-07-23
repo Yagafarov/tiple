@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container, Typography, Button, Grid, styled } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import logo from '../assets/logo.svg';
 import { LocationOn } from '@mui/icons-material';
-import { useLanguage } from './LanguageContext'; 
+import { useLanguage } from './LanguageContext';
+import LoginModal from './LoginModal'; // Import the modal component
 
 const FooterContainer = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.primary.main,
@@ -29,6 +30,15 @@ const ButtonGroup = styled(Box)({
 const FooterApp = () => {
     const theme = useTheme();
     const { language } = useLanguage();
+    const [modalOpen, setModalOpen] = useState(false); // State to control the modal
+
+    const handleOpenModal = () => {
+        setModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setModalOpen(false);
+    };
 
     return (
         <FooterContainer>
@@ -71,8 +81,8 @@ const FooterApp = () => {
                                 <Button
                                     color="primary"
                                     variant="text"
-                                    component="a"
-                                    href="/signup"
+                                    component="button"
+                                    onClick={handleOpenModal} // Open the modal on click
                                     sx={{ color: 'white' }}
                                 >
                                     {language === 'ru' ? 'Войти' : 'Kirish'}
@@ -96,6 +106,7 @@ const FooterApp = () => {
                     </Grid>
                 </Grid>
             </Container>
+            <LoginModal open={modalOpen} onClose={handleCloseModal} /> {/* Render the modal */}
         </FooterContainer>
     );
 };

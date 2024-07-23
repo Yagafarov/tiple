@@ -13,9 +13,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ToggleColorMode from './ToggleColorMode';
 import { Link } from '@mui/material';
 import { useLanguage } from './LanguageContext';
+import LoginModal from './LoginModal'; 
 
 function NavigationBar({ mode, toggleColorMode }) {
   const [open, setOpen] = React.useState(false);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const { language, setLanguage } = useLanguage();
 
   const toggleDrawer = (newOpen) => () => {
@@ -38,6 +40,14 @@ function NavigationBar({ mode, toggleColorMode }) {
 
   const handleLanguageChange = (selectedLanguage) => {
     setLanguage(selectedLanguage);
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -123,8 +133,7 @@ function NavigationBar({ mode, toggleColorMode }) {
                 color="primary"
                 variant="text"
                 // size="small"
-                component="a"
-                href="/signup"
+                onClick={handleOpenModal} // Open the modal on click
                 sx={{ color: 'white' }}  // Set text color to white
               >
                 {language === 'ru' ? 'Войти' : 'Kirish'}
@@ -164,15 +173,14 @@ function NavigationBar({ mode, toggleColorMode }) {
                   </MenuItem>
                   <Divider />
                   <MenuItem>
-                    <Button
-                      color="primary"
-                      variant="outlined"
-                      component="a"
-                      href="/signin/"
-                      sx={{ width: '100%'}}  // Set text color and border to white
-                    >
-                      {language === 'ru' ? 'Войти' : 'Kirish'}
-                    </Button>
+                  <Button
+                color="primary"
+                variant="outlined"
+                // size="small"
+                onClick={handleOpenModal}
+              >
+                {language === 'ru' ? 'Войти' : 'Kirish'}
+              </Button>
                   </MenuItem>
                 </Box>
               </Drawer>
@@ -180,6 +188,7 @@ function NavigationBar({ mode, toggleColorMode }) {
           </Toolbar>
         </Container>
       </AppBar>
+      <LoginModal open={modalOpen} onClose={handleCloseModal} /> {/* Render the modal */}
     </div>
   );
 }
